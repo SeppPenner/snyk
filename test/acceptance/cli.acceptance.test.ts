@@ -1587,6 +1587,11 @@ test('`test foo:latest --docker --file=Dockerfile remediation advice`', async (t
           name: 'docker-image',
           docker: {
             baseImage: 'ubuntu:14.04',
+            dockerfilePackages: {
+              'curl': {
+                instruction: 'RUN apt-get install -y curl',
+              },
+            },
           },
           dependencies: {
             'apt/libapt-pkg5.0': {
@@ -1599,6 +1604,10 @@ test('`test foo:latest --docker --file=Dockerfile remediation advice`', async (t
             },
             'bzip2/libbz2-1.0': {
               version: '1.0.6-8.1',
+            },
+            'curl': {
+              name: 'curl',
+              version: '7.38.0-4+deb8u11',
             },
           },
         },
