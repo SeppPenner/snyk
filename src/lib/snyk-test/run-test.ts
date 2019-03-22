@@ -68,12 +68,13 @@ async function runTest(packageManager: string, root: string, options): Promise<o
     }
 
     if (options.docker && options.file && options['exclude-base-image-vulns']) {
-      res.vulnerabilities = res.vulnerabilities.filter((vuln) => (vuln.dockerfileInstruction));
+      res = excludeBaseImageVulnsFromResult(res);
     }
 
     res.uniqueCount = countUniqueVulns(res.vulnerabilities);
 
     return res;
+
   } finally {
     spinner.clear(spinnerLbl)();
   }
@@ -250,6 +251,18 @@ async function assembleRemotePayload(root, options): Promise<Payload> {
   };
   payload.qs = common.assembleQueryString(options);
   return payload;
+}
+
+function excludeBaseImageVulnsFromResult(res) {
+  const allVulns = res.vulnerabilities;
+  const vulnsExcludingBaseImage = allVulns.filter((vuln) => (vuln.dockerfileInstruction));
+  const ok = vulnsExcludingBaseImage.length === 0 ? true : false;
+
+  return {
+    ...res,
+    vulnerabilities: vulnsExcludingBaseImage,
+    ok,
+  };
 }
 
 function countUniqueVulns(vulns: AnnotatedIssue[]): number {
