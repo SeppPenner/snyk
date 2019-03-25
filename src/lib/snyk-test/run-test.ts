@@ -160,6 +160,7 @@ interface PluginMetadata {
   packageFormatVersion?: string;
   packageManager: string;
   imageLayers?: any;
+  targetFile?: string; // this is wrong (because Shaun said it)
 }
 
 interface DepDict {
@@ -179,7 +180,12 @@ interface DepTree {
 interface Package {
   plugin: PluginMetadata;
   package?: DepTree;
-  depRoots: DepTree[];
+  depRoots: DepRoot[];
+}
+
+interface DepRoot {
+  depTree: DepTree; // to be soon replaced with depGraph
+  targetFile?: string;
 }
 
 async function assembleLocalPayload(root, options, policyLocations): Promise<Payload[]> {
@@ -196,9 +202,11 @@ async function assembleLocalPayload(root, options, policyLocations): Promise<Pay
     await spinner(spinnerLbl);
     const inspectRes: Package = await moduleInfo.inspect(root, options.file, options);
 
-    const pkgs: DepTree[] = inspectRes.depRoots || [inspectRes.package];
+    const depRoots: DepRoot[] = inspectRes.depRoots ||
+      [{ depTree: inspectRes.package, targetFile: inspectRes.plugin.targetFile}];
 
-    for (const pkg of pkgs) {
+    for (const depRoot of depRoots) {
+      const pkg = depRoot.depTree;
       if (_.get(inspectRes, 'plugin.packageManager')) {
         options.packageManager = inspectRes.plugin.packageManager;
       }

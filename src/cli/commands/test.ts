@@ -86,6 +86,7 @@ async function test(...args) {
     }
     for (const r of res) {
       results.push(_.assign(r, {path}));
+      resultOptions.push(testOpts);
     }
   }
 
