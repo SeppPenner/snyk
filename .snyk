@@ -32,3 +32,7 @@ patch:
         patched: '2019-07-04T06:25:52.864Z'
     - snyk-nodejs-lockfile-parser > graphlib > lodash:
         patched: '2019-07-04T06:25:52.864Z'
+    - snyk > snyk-mvn-plugin > lodash:
+        patched: '2019-07-10T07:21:13.923Z'
+    - snyk > snyk-php-plugin > @snyk/composer-lockfile-parser > lodash:
+        patched: '2019-07-10T07:21:13.923Z'
