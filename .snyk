@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.13.1
+version: v1.13.5
 # ignores vulnerabilities until expiry date; change duration by modifying expiry date
 ignore:
   'npm:mem:20180117':
@@ -9,4 +9,26 @@ ignore:
     - tap > nyc > yargs > os-locale > mem:
         reason: DoS vulnerability is not valid for CLI tool
         expires: '2019-12-19T10:35:25.346Z'
-patch: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  SNYK-JS-LODASH-450202:
+    - lodash:
+        patched: '2019-07-04T06:25:52.864Z'
+    - '@snyk/dep-graph > lodash':
+        patched: '2019-07-04T06:25:52.864Z'
+    - inquirer > lodash:
+        patched: '2019-07-04T06:25:52.864Z'
+    - snyk-config > lodash:
+        patched: '2019-07-04T06:25:52.864Z'
+    - snyk-nodejs-lockfile-parser > lodash:
+        patched: '2019-07-04T06:25:52.864Z'
+    - snyk-nuget-plugin > lodash:
+        patched: '2019-07-04T06:25:52.864Z'
+    - snyk-php-plugin > lodash:
+        patched: '2019-07-04T06:25:52.864Z'
+    - '@snyk/dep-graph > graphlib > lodash':
+        patched: '2019-07-04T06:25:52.864Z'
+    - snyk-go-plugin > graphlib > lodash:
+        patched: '2019-07-04T06:25:52.864Z'
+    - snyk-nodejs-lockfile-parser > graphlib > lodash:
+        patched: '2019-07-04T06:25:52.864Z'
