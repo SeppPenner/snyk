@@ -90,7 +90,7 @@
     "then-fs": "^2.0.0",
     "update-notifier": "^2.5.0",
     "uuid": "^3.3.2",
-    "snyk": "^1.192.4"
+    "snyk": "^1.230.5"
   },
   "devDependencies": {
     "@types/diff": "^3.5.2",
