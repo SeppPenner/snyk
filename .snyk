@@ -41,3 +41,7 @@ patch:
         patched: '2019-10-04T06:28:50.170Z'
     - proxy-agent > pac-proxy-agent > https-proxy-agent:
         patched: '2019-10-04T06:28:50.170Z'
+    - snyk > proxy-agent > https-proxy-agent:
+        patched: '2019-10-05T06:29:34.595Z'
+    - snyk > proxy-agent > pac-proxy-agent > https-proxy-agent:
+        patched: '2019-10-05T06:29:34.595Z'
