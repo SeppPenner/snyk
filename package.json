@@ -56,7 +56,7 @@
     "abbrev": "^1.1.1",
     "ansi-escapes": "^3.1.0",
     "chalk": "^2.4.1",
-    "configstore": "^3.1.2",
+    "configstore": "^5.0.0",
     "debug": "^3.1.0",
     "diff": "^4.0.1",
     "get-uri": "2.0.2",
@@ -88,7 +88,7 @@
     "source-map-support": "^0.5.10",
     "tempfile": "^2.0.0",
     "then-fs": "^2.0.0",
-    "update-notifier": "^2.5.0",
+    "update-notifier": "^4.0.0",
     "uuid": "^3.3.2",
     "snyk": "^1.231.0"
   },
